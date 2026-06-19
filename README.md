@@ -1,6 +1,7 @@
 # TMCBS: Transversal Multiple Code Block Simulator
 
 [![arXiv](https://img.shields.io/badge/arXiv-2504.05611-b31b1b.svg)](https://arxiv.org/abs/2504.05611)
+[![DOI](https://zenodo.org/badge/1274801476.svg)](https://doi.org/10.5281/zenodo.20767966)
 ![Python](https://img.shields.io/badge/python-3.11--3.13-blue.svg)
 ![Tests](https://img.shields.io/badge/tests-pytest-green.svg)
 ![MPI](https://img.shields.io/badge/MPI-mpi4py-informational.svg)
