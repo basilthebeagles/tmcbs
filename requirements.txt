@@ -1,0 +1,22 @@
+# TMCBS runtime dependencies.
+#
+# Tested with Python 3.13. Versions after the '#' are the exact ones the library
+# was validated against; the loose lower bounds should also work.
+
+# --- core: circuit construction, sampling, parity-check extraction ---
+stim>=1.14            # 1.14.0  stabilizer circuit simulator + detector error models
+sinter>=1.14          # 1.14.0  binomial error-bar fitting (paper's Bayes-factor CIs)
+numpy>=1.26           # 1.26.4
+scipy>=1.11           # 1.14.1  (sparse matrices; CI root-find fallback)
+
+# --- decoders ---
+# Tesseract is the decoder used for the paper's main results (decoder="teser").
+# Install from PyPI; the import name is `tesseract_decoder`.
+tesseract-decoder     #         search-based decoder (Beni, Higgott, Shutty 2025)
+ldpc>=2.3             # 2.3.4   BP-OSD / BP-LSD fallbacks (decoder="BP-OSD"/"LSD")
+
+# --- plotting (notebooks only) ---
+matplotlib>=3.8       # 3.9.2
+
+# --- parallelism (runEbitExperimentMPI.py only; not needed for notebooks) ---
+mpi4py>=4.0           # 4.0.1   requires a system MPI (e.g. OpenMPI) at runtime

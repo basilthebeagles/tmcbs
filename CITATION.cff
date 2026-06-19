@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use TMCBS, please cite the associated paper."
+title: "TMCBS: Transversal Multiple Code Block Simulator"
+version: "0.1.0"
+type: software
+authors:
+  - family-names: Stack
+    given-names: John
+    email: jstack@ncsu.edu
+  - family-names: Wang
+    given-names: Ming
+  - family-names: Mueller
+    given-names: Frank
+abstract: "Circuit-level simulation of distributed transversal fault-tolerant operations between rotated surface codes and bivariate-bicycle qLDPC codes using noisy ebits."
+keywords:
+  - quantum error correction
+  - distributed quantum computing
+  - fault tolerance
+  - surface codes
+  - qLDPC codes
+  - bivariate-bicycle codes
+preferred-citation:
+  type: article
+  title: "Transversal Fault Tolerant Distributed Quantum Computing Operations"
+  authors:
+    - family-names: Stack
+      given-names: John
+      email: jstack@ncsu.edu
+    - family-names: Wang
+      given-names: Ming
+    - family-names: Mueller
+      given-names: Frank
+  year: 2026
+  journal: "arXiv:2504.05611 [quant-ph]"
+  url: "https://arxiv.org/abs/2504.05611"
+  identifiers:
+    - type: url
+      value: "https://arxiv.org/abs/2504.05611"
