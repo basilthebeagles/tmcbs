@@ -7,7 +7,7 @@
 #SBATCH --ntasks=24
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:00:00
-## #SBATCH --account=jstack
+## #SBATCH --account=<account>
 
 find_repo_root() {
     local start="${SLURM_SUBMIT_DIR:-$PWD}"

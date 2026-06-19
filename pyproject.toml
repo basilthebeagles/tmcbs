@@ -7,7 +7,7 @@ name = "tmcbs"
 version = "0.1.0"
 description = "Transversal Multiple Code Block Simulator: circuit-level simulation of distributed transversal fault-tolerant operations between surface and bivariate-bicycle codes."
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.11,<3.14"  # upper bound: tesseract-decoder has no 3.14 wheels yet
 license = { file = "LICENSE" }
 authors = [
     {name = "John Stack", email = "jstack@ncsu.edu"},
@@ -40,11 +40,11 @@ dependencies = [
     "tesseract-decoder",
     "ldpc>=2.3",
     "matplotlib>=3.8",
+    "pytest>=7",
 ]
 
 [project.optional-dependencies]
 mpi = ["mpi4py>=4.0"]
-test = ["pytest>=7"]
 
 [project.urls]
 Paper = "https://arxiv.org/abs/2504.05611"

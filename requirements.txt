@@ -1,5 +1,6 @@
 # TMCBS runtime dependencies.
 #
+# Supported Python: 3.11-3.13 (tesseract-decoder has no 3.14 wheels yet).
 # Tested with Python 3.13. Versions after the '#' are the exact ones the library
 # was validated against; the loose lower bounds should also work.
 
@@ -17,6 +18,9 @@ ldpc>=2.3             # 2.3.4   BP-OSD / BP-LSD fallbacks (decoder="BP-OSD"/"LSD
 
 # --- plotting (notebooks only) ---
 matplotlib>=3.8       # 3.9.2
+
+# --- testing (installed by default; run: python -m pytest -q) ---
+pytest>=7
 
 # --- parallelism (runEbitExperimentMPI.py only; not needed for notebooks) ---
 mpi4py>=4.0           # 4.0.1   requires a system MPI (e.g. OpenMPI) at runtime

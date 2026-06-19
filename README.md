@@ -1,7 +1,7 @@
 # TMCBS: Transversal Multiple Code Block Simulator
 
 [![arXiv](https://img.shields.io/badge/arXiv-2504.05611-b31b1b.svg)](https://arxiv.org/abs/2504.05611)
-![Python](https://img.shields.io/badge/python-%3E%3D3.11-blue.svg)
+![Python](https://img.shields.io/badge/python-3.11--3.13-blue.svg)
 ![Tests](https://img.shields.io/badge/tests-pytest-green.svg)
 ![MPI](https://img.shields.io/badge/MPI-mpi4py-informational.svg)
 ![Status](https://img.shields.io/badge/status-research%20code-orange.svg)
@@ -42,19 +42,25 @@ From the repository root:
 python -m pip install -e .
 ```
 
-This installs the core package and runtime dependencies: `stim`, `sinter`,
-`numpy`, `scipy`, `tesseract-decoder`, `ldpc`, and `matplotlib`.
+This installs the core package, its runtime dependencies (`stim`, `sinter`,
+`numpy`, `scipy`, `tesseract-decoder`, `ldpc`, `matplotlib`), and `pytest` for the
+test suite.
 
 Optional extras:
 
 ```bash
-# MPI runner and tests
-python -m pip install -e ".[mpi,test]"
+# MPI runner (mpi4py)
+python -m pip install -e ".[mpi]"
 ```
 
-`requirements.txt` is a convenience file for reproducing the development
-environment. `mpi4py` requires a working system MPI implementation such as
+`mpi4py` requires a working system MPI implementation such as
 OpenMPI.
+
+## Tests
+
+```bash
+python -m pytest -q
+```
 
 ## Quickstart
 
@@ -180,16 +186,7 @@ Current scripts:
 
 See [`scripts/README.md`](scripts/README.md) for details.
 
-## Tests
 
-```bash
-python -m pip install -e ".[test]"
-python -m pytest -q
-```
-
-The tests check code metadata, circuit construction, Table III detector/error
-mechanism counts for small codes, decoder integration, and Bayes-factor
-confidence intervals.
 
 ## Citation
 
