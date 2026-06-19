@@ -1,4 +1,4 @@
-# TMCBS -- Transversal Multiple Code Block Simulator
+# TMCBS: Transversal Multiple Code Block Simulator
 
 [![arXiv](https://img.shields.io/badge/arXiv-2504.05611-b31b1b.svg)](https://arxiv.org/abs/2504.05611)
 ![Python](https://img.shields.io/badge/python-%3E%3D3.11-blue.svg)
@@ -6,7 +6,7 @@
 ![MPI](https://img.shields.io/badge/MPI-mpi4py-informational.svg)
 ![Status](https://img.shields.io/badge/status-research%20code-orange.svg)
 
-TMCBS generates and decodes circuit-level simulations of logical circuits of transversal operations between multiple codeblocks of either surface codes or qLDPC Bivariate-Bicycle codes. Whilst originally designed for distribtued transveral operations, it can be used for local transversal operations of arbitary physical error rate. The code can run in single-threaded mode but is also designed to be ran on clusters: the code supports MPI for decoding large codes and logical circuits. 
+TMCBS generates and decodes circuit-level simulations of logical circuits of transversal operations between multiple codeblocks of either surface codes or qLDPC Bivariate-Bicycle codes. Whilst originally designed for distribtued transveral operations, it can be used for local transversal operations. The code can run in single-threaded mode but it is also designed to be run on clusters: the code supports MPI for decoding large codes and logical circuits. 
 
 TMCBS feature prebuilt experiments:
 
