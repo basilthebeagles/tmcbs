@@ -16,12 +16,12 @@ Typical use::
     print(res)                                     # LER + Bayes-factor error bars
 
 The low-level syndrome-extraction circuit construction lives in
-``generalCircuitBuilder.py`` / ``generalCircuitBuilderSurface.py``; this package
-assembles the distributed protocols (``experiments``) and decoding (``decoding``)
-on top of them, with a code registry and a single-process LER estimator. Helper
-code derived from Gong et al.'s SlidingWindowDecoder is vendored under
-``third_party.gong_sliding_window_decoder``. For large production sweeps use
-``runEbitExperimentMPI.py`` (MPI), which shares the same building blocks.
+``general_circuit_builder.py`` / ``general_circuit_builder_surface.py``; this
+package assembles the distributed protocols (``experiments``) and decoding
+(``decoding``) on top of them, with a code registry and a single-process LER
+estimator. Helper code derived from Gong et al.'s SlidingWindowDecoder is vendored
+under ``third_party.gong_sliding_window_decoder``. For large production sweeps use
+``run_ebit_experiment_mpi.py`` (MPI), which shares the same building blocks.
 """
 
 from __future__ import annotations

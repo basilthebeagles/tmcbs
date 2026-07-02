@@ -46,6 +46,11 @@ dependencies = [
 [project.optional-dependencies]
 mpi = ["mpi4py>=4.0"]
 
+[tool.pytest.ini_options]
+markers = [
+    "mpi: end-to-end tests that launch the MPI driver under mpirun (need a working MPI; auto-skip otherwise)",
+]
+
 [project.urls]
 Paper = "https://arxiv.org/abs/2504.05611"
 

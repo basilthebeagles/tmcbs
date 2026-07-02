@@ -37,12 +37,12 @@ RESULT_DIR="$REPO_ROOT/scripts/results/fig4"
 mkdir -p "$RESULT_DIR"
 
 # Surface code [[81,1,9]]
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --surface-code -d 9 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6                  --file-name "$RESULT_DIR/cnot_sc_d9_serial"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --surface-code -d 9 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6 --numEbitsPerCycle 9 --file-name "$RESULT_DIR/cnot_sc_d9_line"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --surface-code -d 9 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6                  --file-name "$RESULT_DIR/cnot_sc_d9_serial"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --surface-code -d 9 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6 --numEbitsPerCycle 9 --file-name "$RESULT_DIR/cnot_sc_d9_line"
 
 # Bivariate-bicycle code [[90,8,10]]
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --bicycle-code --l 15 --m 3 --Ax 9   --Ay 1,2 --Bx 0,2,7 --distance 10 --n 90 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6                  --file-name "$RESULT_DIR/cnot_bb90_serial"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --bicycle-code --l 15 --m 3 --Ax 9   --Ay 1,2 --Bx 0,2,7 --distance 10 --n 90 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6 --numEbitsPerCycle 10 --file-name "$RESULT_DIR/cnot_bb90_line"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --bicycle-code --l 15 --m 3 --Ax 9   --Ay 1,2 --Bx 0,2,7 --distance 10 --n 90 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6                  --file-name "$RESULT_DIR/cnot_bb90_serial"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --bicycle-code --l 15 --m 3 --Ax 9   --Ay 1,2 --Bx 0,2,7 --distance 10 --n 90 --phys-noise 1e-3 --trans-ratio 1 --ebitt1t2Ratios 1e2,1e1,1e0,1e-1,1e-2,1e-3,1e-4,1e-5,1e-6 --numEbitsPerCycle 10 --file-name "$RESULT_DIR/cnot_bb90_line"
 
 # x-axis (decoherence ratio) is stored as transNoiseArr in each .npz.
 echo "results in scripts/results/fig4/"

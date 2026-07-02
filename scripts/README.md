@@ -1,13 +1,21 @@
 # MPI Reproduction Scripts
 
-This directory contains SLURM batch scripts for reproducing paper-style sweeps
-with the parallel driver:
+This directory contains scripts for reproducing paper-style sweeps with the
+parallel driver:
 
 ```bash
-python -m mpi4py -m tmcbs.runEbitExperimentMPI
+python -m mpi4py -m tmcbs.run_ebit_experiment_mpi
 ```
 
-Each `mpirun` line writes one `.npz` file under `scripts/results/fig*/`. The BB
+They come in two flavours with **identical physics configurations**:
+
+- [`slurm/`](slurm/): SLURM batch scripts with `#SBATCH` headers, submitted with
+  `sbatch` on a cluster.
+- [`local/`](local/): the same runs launched with a plain `mpirun` on a single
+  workstation -- no scheduler required.
+
+Each `mpirun` line writes one `.npz` file under `scripts/results/fig*/`
+(identical for both flavours), so `plot_results.ipynb` plots either one. The BB
 code runs are intended for MPI; they are usually too slow for comfortable
 single-process notebook execution.
 
@@ -26,18 +34,34 @@ codes.
 
 ## Running
 
-From the repository root:
+From the repository root, first install the MPI extra:
 
 ```bash
 python -m pip install -e ".[mpi]"
-sbatch scripts/reproduce_fig3.sh
 ```
 
-or run a single point manually:
+**On a cluster (SLURM):**
+
+```bash
+sbatch scripts/slurm/reproduce_fig3.sh
+```
+
+**On a single machine (no scheduler):** the rank count defaults to
+`(core count - 1)`, leaving a core free for the OS; override it with `NRANKS`.
+
+```bash
+bash scripts/local/reproduce_fig3.sh            # ranks = cores - 1
+NRANKS=8 bash scripts/local/reproduce_fig3.sh   # explicit rank count
+```
+
+These use the paper's full configurations, so a figure can take hours on one
+machine.
+
+Or run a single point manually:
 
 ```bash
 mkdir -p scripts/results/manual
-mpirun -n 64 python -m mpi4py -m tmcbs.runEbitExperimentMPI \
+mpirun -n 8 python -m mpi4py -m tmcbs.run_ebit_experiment_mpi \
     --experiment 1 \
     --surface-code -d 9 \
     --phys-noise 1e-3 \
@@ -47,8 +71,8 @@ mpirun -n 64 python -m mpi4py -m tmcbs.runEbitExperimentMPI \
 
 Useful knobs:
 
-- `#SBATCH --ntasks`: total MPI ranks. Rank 0 is the coordinator; all other
-  ranks decode batches of shots.
+- SLURM `#SBATCH --ntasks` / local `NRANKS`: total MPI ranks. Rank 0 is the
+  coordinator; all other ranks decode batches of shots.
 - `--needed-logical-errors`: target logical failures before stopping each point.
 - `--shots-cutoff`: hard cap on total shots per point.
 - `--decoder`: `teser`, `BP-OSD`, or `LSD`.
@@ -78,3 +102,10 @@ For Fig. 5, Pauli-string weight is encoded in the filename suffix `_wN`, where
 Open [`plot_results.ipynb`](plot_results.ipynb) to generate plots from populated
 result directories. The notebook detects the swept axis automatically: physical
 error rate for Fig. 3, decoherence ratio for Fig. 4, and Pauli weight for Fig. 5.
+
+Open [`read_manual_results.ipynb`](read_manual_results.ipynb) to dump the numbers
+without plotting: for every `.npz` under `scripts/results/` it prints the
+experiment, decoder, noise axes, and a per-point table of logical error rate,
+error/shot counts, Bayes-factor confidence interval, timing, and shot-cap flag.
+Set `SEARCH_DIR` in the notebook to narrow the scan to one directory (e.g. the
+`manual/` runs).

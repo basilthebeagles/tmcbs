@@ -9,7 +9,7 @@ decode. Circuit construction, the code registry and decoding all come from the
 
 Run with at least two ranks, e.g.
 
-    mpirun -n 64 python -m mpi4py -m tmcbs.runEbitExperimentMPI \\
+    mpirun -n 64 python -m mpi4py -m tmcbs.run_ebit_experiment_mpi \\
         --experiment 1 --surface-code -d 5 --phys-noise 1e-2,1e-3 \\
         --trans-ratio 1 --file-name cnot_sc_d5
 

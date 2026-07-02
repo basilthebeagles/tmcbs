@@ -6,7 +6,7 @@ bicycle codes or ``CircuitBuilderSurface`` for rotated surface codes. The two
 builders share a method vocabulary, so every constructor below is written once and
 works for both code families; ``Code.is_surface`` selects the right builder.
 
-The builder vocabulary (see ``generalCircuitBuilder*.py``):
+The builder vocabulary (see ``general_circuit_builder*.py``):
 
 ``initQubits(block, errors=True)``
     Noisy reset of one logical code block.
@@ -38,7 +38,7 @@ The builder vocabulary (see ``generalCircuitBuilder*.py``):
 Each constructor maps one-to-one onto the builder calls for its protocol, so the
 circuits stay easy to read and to fork into your own gadgets (see notebook 04).
 
-Experiment indices (kept compatible with ``runEbitExperimentMPI.py --experiment``):
+Experiment indices (kept compatible with ``run_ebit_experiment_mpi.py --experiment``):
 
 =  =========================  ============================
 0  MEMORY                     :func:`memory`
@@ -57,8 +57,8 @@ from typing import List, Sequence, Union
 
 import stim
 
-from . import generalCircuitBuilder
-from . import generalCircuitBuilderSurface
+from . import general_circuit_builder
+from . import general_circuit_builder_surface
 from .codes import Code
 
 # Number of syndrome-extraction rounds inserted between operations for the
@@ -90,9 +90,9 @@ def make_builder(code: Code, num_blocks: int, p: float, *, ebits: bool = False):
     your own circuits from the builder vocabulary (see notebook 04).
     """
     if code.is_surface:
-        return generalCircuitBuilderSurface.CircuitBuilderSurface(
+        return general_circuit_builder_surface.CircuitBuilderSurface(
             code.builder_object, code.d, p, code.n, num_blocks, ebits=ebits)
-    return generalCircuitBuilder.CircuitBuilder(
+    return general_circuit_builder.CircuitBuilder(
         code.builder_object, code.d, p, code.n, num_blocks, ebits=ebits)
 
 

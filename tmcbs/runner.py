@@ -1,6 +1,6 @@
 """Single-process sampling + decoding + adaptive logical-error-rate estimation.
 
-``runEbitExperimentMPI.py`` distributes the work in this module across MPI ranks.
+``run_ebit_experiment_mpi.py`` distributes the work in this module across MPI ranks.
 For notebooks and quick experiments you usually just want one function:
 
 >>> from tmcbs import surface_code, non_local_cnot, estimate_ler
@@ -18,7 +18,6 @@ within a factor ``bayes_factor`` of the maximum-likelihood estimate).
 
 from __future__ import annotations
 
-import math
 import time
 from dataclasses import dataclass
 from typing import Tuple
@@ -141,52 +140,25 @@ def bayes_factor_interval(errors: int, shots: int,
     Returns the interval of rates ``q`` whose likelihood ``L(q)`` satisfies
     ``L(q) / L(p_hat) >= 1 / factor`` where ``p_hat = errors / shots`` is the MLE.
 
-    When ``sinter`` is installed this defers to ``sinter.fit_binomial`` -- the exact
-    routine used for the figures in the paper -- and otherwise falls back to a
-    self-contained ``scipy.optimize.brentq`` root-find of the same condition.
+    This defers to ``sinter.fit_binomial`` -- the exact routine used for the figures
+    in the paper. ``sinter`` is a core dependency; if it cannot be imported this
+    raises :class:`ImportError` rather than silently substituting a different
+    estimator.
     """
     n = int(shots)
     x = int(errors)
     if n <= 0:
         return (float("nan"), float("nan"))
 
-    # Preferred path: the same estimator used for the paper's error bars.
     try:
         import sinter
-        r = sinter.fit_binomial(num_shots=n, num_hits=min(x, n),
-                                max_likelihood_factor=float(factor))
-        return (float(r.low), float(r.high))
-    except Exception:
-        pass
+    except ImportError as exc:  # pragma: no cover - sinter is a core dependency
+        raise ImportError(
+            "bayes_factor_interval requires 'sinter' (a core TMCBS dependency) for "
+            "the paper's Bayes-factor error bars. Install it with "
+            "`pip install sinter` or reinstall the package (`pip install -e .`)."
+        ) from exc
 
-    log_thresh = math.log(factor)
-    phat = x / n
-
-    def loglik(q: float) -> float:
-        if q <= 0.0:
-            return 0.0 if x == 0 else -math.inf
-        if q >= 1.0:
-            return 0.0 if x == n else -math.inf
-        return x * math.log(q) + (n - x) * math.log1p(-q)
-
-    ll_hat = loglik(phat)
-
-    def g(q: float) -> float:  # >= 0 inside the region
-        return loglik(q) - ll_hat + log_thresh
-
-    try:
-        from scipy.optimize import brentq
-    except Exception:  # pragma: no cover - scipy is a hard dependency in practice
-        return (float("nan"), float("nan"))
-
-    # Lower edge.
-    if x == 0:
-        low = 0.0
-    else:
-        low = brentq(g, 1e-15, phat)
-    # Upper edge.
-    if x == n:
-        high = 1.0
-    else:
-        high = brentq(g, phat, 1.0 - 1e-15)
-    return (low, high)
+    r = sinter.fit_binomial(num_shots=n, num_hits=min(x, n),
+                            max_likelihood_factor=float(factor))
+    return (float(r.low), float(r.high))

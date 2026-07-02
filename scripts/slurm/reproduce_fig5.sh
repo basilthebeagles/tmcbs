@@ -36,10 +36,10 @@ RESULT_DIR="$REPO_ROOT/scripts/results/fig5"
 mkdir -p "$RESULT_DIR"
 
 # Bivariate-bicycle code [[36,4,6]], weights 2,3,4,6
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1         --file-name "$RESULT_DIR/ppm_bb36_w2"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1,0       --file-name "$RESULT_DIR/ppm_bb36_w3"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1,0,1     --file-name "$RESULT_DIR/ppm_bb36_w4"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1,0,1,0,1 --file-name "$RESULT_DIR/ppm_bb36_w6"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1         --file-name "$RESULT_DIR/ppm_bb36_w2"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1,0       --file-name "$RESULT_DIR/ppm_bb36_w3"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1,0,1     --file-name "$RESULT_DIR/ppm_bb36_w4"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 5 --bicycle-code --l 3  --m 6 --Ax 1   --Ay 2,3 --Bx 0,2   --By 1 --distance 6  --n 36 --phys-noise 1e-3 --trans-ratio 1 --ppm 1,0,1,0,1 --file-name "$RESULT_DIR/ppm_bb36_w6"
 
 # LER for each weight is resultsArr[0,0] in the matching .npz.
 echo "results in scripts/results/fig5/"

@@ -36,16 +36,16 @@ RESULT_DIR="$REPO_ROOT/scripts/results/fig3"
 mkdir -p "$RESULT_DIR"
 
 # Surface code [[49,1,7]]
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/cnot_sc_d7_ebit1x"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/cnot_sc_d7_ebit10x"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 2 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/tele_sc_d7_ebit1x"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 2 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/tele_sc_d7_ebit10x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/cnot_sc_d7_ebit1x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/cnot_sc_d7_ebit10x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 2 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/tele_sc_d7_ebit1x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 2 --surface-code -d 7 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/tele_sc_d7_ebit10x"
 
 # Bivariate-bicycle code [[54,4,8]]
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/cnot_bb54_ebit1x"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 1 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/cnot_bb54_ebit10x"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 2 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/tele_bb54_ebit1x"
-mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.runEbitExperimentMPI --experiment 2 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/tele_bb54_ebit10x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/cnot_bb54_ebit1x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 1 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/cnot_bb54_ebit10x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 2 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 1  --file-name "$RESULT_DIR/tele_bb54_ebit1x"
+mpirun -n "${SLURM_NTASKS:-64}" python -m mpi4py -m tmcbs.run_ebit_experiment_mpi --experiment 2 --bicycle-code --l 3  --m 9 --Ax 1   --Ay 1,3 --Bx 0,2   --By 2 --distance 8  --n 54 --phys-noise 1e-2,5e-3,1e-3 --trans-ratio 10 --file-name "$RESULT_DIR/tele_bb54_ebit10x"
 
 # Other codes from the paper (swap the geometry flags above):
 #   [[9,1,3]] / [[49,1,7]] / [[81,1,9]] / [[121,1,11]] SC : --surface-code -d 3 | 7 | 9 | 11

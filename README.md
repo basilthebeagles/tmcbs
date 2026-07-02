@@ -3,11 +3,11 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2504.05611-b31b1b.svg)](https://arxiv.org/abs/2504.05611)
 [![DOI](https://zenodo.org/badge/1274801476.svg)](https://doi.org/10.5281/zenodo.20767966)
 ![Python](https://img.shields.io/badge/python-3.11--3.13-blue.svg)
-![Tests](https://img.shields.io/badge/tests-pytest-green.svg)
+[![CI](https://github.com/basilthebeagles/tmcbs/actions/workflows/ci.yml/badge.svg)](https://github.com/basilthebeagles/tmcbs/actions/workflows/ci.yml)
 ![MPI](https://img.shields.io/badge/MPI-mpi4py-informational.svg)
 ![Status](https://img.shields.io/badge/status-research%20code-orange.svg)
 
-TMCBS generates and decodes circuit-level simulations of logical circuits of transversal operations between multiple codeblocks of either surface codes or qLDPC Bivariate-Bicycle codes. Whilst originally designed for distribtued transveral operations, it can be used for local transversal operations. The code can run in single-threaded mode but it is also designed to be run on clusters: the code supports MPI for decoding large codes and logical circuits. 
+TMCBS generates and decodes circuit-level simulations of logical circuits of transversal operations between multiple codeblocks of either surface codes or qLDPC Bivariate-Bicycle codes. Whilst originally designed for distributed transveral operations, it can be used for local transversal operations. The code can run in single-threaded mode but it is also designed to be run on multiple cores and compute clusters: the code supports MPI for decoding large codes and logical circuits. 
 
 TMCBS feature prebuilt experiments:
 
@@ -121,10 +121,10 @@ analogue of the non-local CNOT). `custom_noise` is also reachable through
 | `tmcbs/experiments.py` | High-level circuit constructors for memory, CNOT, teleportation, local baselines, and PPM. |
 | `tmcbs/decoding.py` | Detector-error-model conversion and logical-error counting with Tesseract, BP-OSD, or LSD. |
 | `tmcbs/runner.py` | Single-process adaptive logical-error-rate estimation. |
-| `tmcbs/runEbitExperimentMPI.py` | MPI sweep driver for production-style runs. |
-| `tmcbs/generalCircuitBuilder*.py` | Low-level syndrome-extraction circuit builders. |
+| `tmcbs/run_ebit_experiment_mpi.py` | MPI sweep driver for production-style runs. |
+| `tmcbs/general_circuit_builder*.py` | Low-level syndrome-extraction circuit builders. |
 | `notebooks/` | Tutorials and small reproductions. |
-| `scripts/` | SLURM/MPI reproduction scripts and plotting notebook. |
+| `scripts/` | MPI reproduction scripts (`slurm/` and no-scheduler `local/`) and result notebooks (plot / print `.npz`). |
 | `third_party/gong_sliding_window_decoder/` | Vendored helper code derived from Anqi Gong's SlidingWindowDecoder. |
 
 ## Decoders
@@ -153,7 +153,7 @@ analogue of the non-local CNOT). `custom_noise` is also reachable through
 The MPI driver distributes batches of shots across ranks:
 
 ```bash
-mpirun -n 64 python -m mpi4py -m tmcbs.runEbitExperimentMPI \
+mpirun -n 64 python -m mpi4py -m tmcbs.run_ebit_experiment_mpi \
     --experiment 1 --surface-code -d 5 \
     --phys-noise 1e-2,5e-3,1e-3 \
     --trans-ratio 10 \
@@ -174,16 +174,33 @@ mpirun -n 64 python -m mpi4py -m tmcbs.runEbitExperimentMPI \
 The runner writes `<file-name>.npz` with the noise axes, logical error rates,
 error counts, shot counts, timing, and shot-limit flags.
 
-Current scripts:
+The reproduction scripts come in two flavours with identical physics configs:
 
-- [`scripts/reproduce_fig3.sh`](scripts/reproduce_fig3.sh): non-local CNOT and
-  teleportation for `[[49,1,7]]` surface code and `[[54,4,8]]` BB code.
-- [`scripts/reproduce_fig4.sh`](scripts/reproduce_fig4.sh): ebit-decoherence
-  sweep for `[[81,1,9]]` surface code and `[[90,8,10]]` BB code.
-- [`scripts/reproduce_fig5.sh`](scripts/reproduce_fig5.sh): PPM-weight sweep for
-  `[[36,4,6]]` BB code.
-- [`scripts/plot_results.ipynb`](scripts/plot_results.ipynb): plot `.npz`
-  outputs saved under `scripts/results/`.
+- [`scripts/slurm/`](scripts/slurm/): SLURM batch scripts (`#SBATCH` headers);
+  submit with `sbatch`.
+- [`scripts/local/`](scripts/local/): the same runs launched with a plain
+  `mpirun` for a single workstation -- no scheduler. Rank count defaults to
+  `(core count - 1)`, leaving a core free; override with `NRANKS`:
+
+  ```bash
+  bash scripts/local/reproduce_fig3.sh          # ranks = cores - 1
+  NRANKS=8 bash scripts/local/reproduce_fig3.sh # explicit rank count
+  ```
+
+  These use the paper's full configurations, so a figure can take hours on one
+  machine.
+
+Each figure:
+
+- `reproduce_fig3.sh`: non-local CNOT and teleportation for `[[49,1,7]]` surface
+  code and `[[54,4,8]]` BB code.
+- `reproduce_fig4.sh`: ebit-decoherence sweep for `[[81,1,9]]` surface code and
+  `[[90,8,10]]` BB code.
+- `reproduce_fig5.sh`: PPM-weight sweep for `[[36,4,6]]` BB code.
+
+Both flavours write to `scripts/results/figN/`, so
+[`scripts/plot_results.ipynb`](scripts/plot_results.ipynb) plots either one
+without changes.
 
 See [`scripts/README.md`](scripts/README.md) for details.
 
