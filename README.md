@@ -1,7 +1,6 @@
 # TMCBS: Transversal Multiple Code Block Simulator
 
-[![arXiv](https://img.shields.io/badge/arXiv-2504.05611-b31b1b.svg)](https://arxiv.org/abs/2504.05611)
-[![DOI](https://zenodo.org/badge/1274801476.svg)](https://doi.org/10.5281/zenodo.20767966)
+[![Paper DOI](https://img.shields.io/badge/DOI-10.1038%2Fs41467--026--75693--3-blue.svg)](https://doi.org/10.1038/s41467-026-75693-3)
 ![Python](https://img.shields.io/badge/python-3.11--3.13-blue.svg)
 [![CI](https://github.com/basilthebeagles/tmcbs/actions/workflows/ci.yml/badge.svg)](https://github.com/basilthebeagles/tmcbs/actions/workflows/ci.yml)
 ![MPI](https://img.shields.io/badge/MPI-mpi4py-informational.svg)
@@ -19,19 +18,26 @@ TMCBS feature prebuilt experiments:
 
 But also contains an API that lets you create new fault-tolerant gadgets from low-level transversal operations. For example, an arbitary non-local SWAP operation: see notebook 04.
 
-Please cite the below paper if you use this code in your work:
+Please cite the [published paper](https://www.nature.com/articles/s41467-026-75693-3)
+if you use this code in your work:
 
-> John Stack, Ming Wang, and Frank Mueller, "Transversal Fault Tolerant
-> Distributed Quantum Computing Operations", arXiv:2504.05611v3 [quant-ph],
-> 30 Apr 2026.
+> John Stack, Ming Wang, and Frank Mueller, "Transversal fault tolerant
+> distributed quantum computing operations", *Nature Communications* (2026).
+> <https://doi.org/10.1038/s41467-026-75693-3>
 
 ```bibtex
-@article{stack2026transversal,
-  title  = {Transversal Fault Tolerant Distributed Quantum Computing Operations},
-  author = {Stack, John and Wang, Ming and Mueller, Frank},
-  journal = {arXiv:2504.05611 [quant-ph]},
-  year   = {2026},
-  url    = {https://arxiv.org/abs/2504.05611}
+@Article{Stack2026,
+author={Stack, John
+and Wang, Ming
+and Mueller, Frank},
+title={Transversal fault tolerant distributed quantum computing operations},
+journal={Nature Communications},
+year={2026},
+month={Jul},
+day={20},
+issn={2041-1723},
+doi={10.1038/s41467-026-75693-3},
+url={https://doi.org/10.1038/s41467-026-75693-3}
 }
 ```
 
@@ -211,14 +217,25 @@ See [`scripts/README.md`](scripts/README.md) for details.
 If TMCBS is useful in your research, please cite the associated paper:
 
 ```bibtex
-@article{stack2026transversal,
-  title  = {Transversal Fault Tolerant Distributed Quantum Computing Operations},
-  author = {Stack, John and Wang, Ming and Mueller, Frank},
-  journal = {arXiv:2504.05611 [quant-ph]},
-  year   = {2026},
-  url    = {https://arxiv.org/abs/2504.05611}
+@Article{Stack2026,
+author={Stack, John
+and Wang, Ming
+and Mueller, Frank},
+title={Transversal fault tolerant distributed quantum computing operations},
+journal={Nature Communications},
+year={2026},
+month={Jul},
+day={20},
+issn={2041-1723},
+doi={10.1038/s41467-026-75693-3},
+url={https://doi.org/10.1038/s41467-026-75693-3}
 }
 ```
+
+## Software Archive
+
+Archived releases of TMCBS are available on Zenodo:
+[https://doi.org/10.5281/zenodo.20767966](https://doi.org/10.5281/zenodo.20767966).
 
 ## Third-Party Code and Licensing
 

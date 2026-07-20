@@ -21,7 +21,7 @@ keywords:
   - bivariate-bicycle codes
 preferred-citation:
   type: article
-  title: "Transversal Fault Tolerant Distributed Quantum Computing Operations"
+  title: "Transversal fault tolerant distributed quantum computing operations"
   authors:
     - family-names: Stack
       given-names: John
@@ -31,5 +31,6 @@ preferred-citation:
     - family-names: Mueller
       given-names: Frank
   year: 2026
-  journal: "arXiv:2504.05611 [quant-ph]"
-  url: "https://arxiv.org/abs/2504.05611"
+  journal: "Nature Communications"
+  doi: "10.1038/s41467-026-75693-3"
+  url: "https://doi.org/10.1038/s41467-026-75693-3"

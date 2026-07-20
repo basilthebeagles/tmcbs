@@ -52,7 +52,7 @@ markers = [
 ]
 
 [project.urls]
-Paper = "https://arxiv.org/abs/2504.05611"
+Paper = "https://doi.org/10.1038/s41467-026-75693-3"
 
 [tool.setuptools]
 # TMCBS plus vendored helper modules derived from Gong et al.'s
