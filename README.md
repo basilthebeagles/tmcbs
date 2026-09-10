@@ -35,7 +35,7 @@ if you use this code in your work:
    journal={Nature Communications},
    author={Stack, John and Wang, Ming and Mueller, Frank},
    year={2026},
-   month=July }
+   month={Jul} }
 ```
 
 ## Installation
@@ -225,7 +225,7 @@ If TMCBS is useful in your research, please cite the associated paper:
    journal={Nature Communications},
    author={Stack, John and Wang, Ming and Mueller, Frank},
    year={2026},
-   month=July }
+   month={Jul} }
 ```
 
 ## Software Archive
