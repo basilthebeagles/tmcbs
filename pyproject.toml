@@ -37,7 +37,10 @@ dependencies = [
     "sinter>=1.14",
     "numpy>=1.26",
     "scipy>=1.11",
-    "tesseract-decoder",
+    # Keep the latest build available at the last green CI run (2026-07-20).
+    # The latest Linux wheels crash with SIGILL on Python 3.12/3.13 runners.
+    # An upper bound also allows the older wheels needed by Intel macOS.
+    "tesseract-decoder<=0.1.1.dev20260711233612",
     "ldpc>=2.3",
     "matplotlib>=3.8",
     "pytest>=7",
