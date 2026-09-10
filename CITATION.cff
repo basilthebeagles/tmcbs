@@ -31,6 +31,14 @@ preferred-citation:
     - family-names: Mueller
       given-names: Frank
   year: 2026
+  month: 7
+  date-released: "2026-07-20"
   journal: "Nature Communications"
+  volume: "17"
+  issue: "1"
+  start: "8838"
+  issn: "2041-1723"
+  publisher:
+    name: "Springer Science and Business Media LLC"
   doi: "10.1038/s41467-026-75693-3"
   url: "https://doi.org/10.1038/s41467-026-75693-3"

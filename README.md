@@ -21,24 +21,21 @@ But also contains an API that lets you create new fault-tolerant gadgets from lo
 Please cite the [published paper](https://www.nature.com/articles/s41467-026-75693-3)
 if you use this code in your work:
 
-> John Stack, Ming Wang, and Frank Mueller, "Transversal fault tolerant
-> distributed quantum computing operations", *Nature Communications* (2026).
-> <https://doi.org/10.1038/s41467-026-75693-3>
+>John Stack, Ming Wang, and Frank Mueller. Transversal fault tolerant distributed quantum computing operations. *Nature Communications* 17, 8838 (2026). https://doi.org/10.1038/s41467-026-75693-3
 
 ```bibtex
-@Article{Stack2026,
-author={Stack, John
-and Wang, Ming
-and Mueller, Frank},
-title={Transversal fault tolerant distributed quantum computing operations},
-journal={Nature Communications},
-year={2026},
-month={Jul},
-day={20},
-issn={2041-1723},
-doi={10.1038/s41467-026-75693-3},
-url={https://doi.org/10.1038/s41467-026-75693-3}
-}
+@article{Stack_2026,
+   title={Transversal fault tolerant distributed quantum computing operations},
+   volume={17},
+   ISSN={2041-1723},
+   url={http://dx.doi.org/10.1038/s41467-026-75693-3},
+   DOI={10.1038/s41467-026-75693-3},
+   number={1},
+   pages={8838},
+   journal={Nature Communications},
+   author={Stack, John and Wang, Ming and Mueller, Frank},
+   year={2026},
+   month=July }
 ```
 
 ## Installation
@@ -217,19 +214,18 @@ See [`scripts/README.md`](scripts/README.md) for details.
 If TMCBS is useful in your research, please cite the associated paper:
 
 ```bibtex
-@Article{Stack2026,
-author={Stack, John
-and Wang, Ming
-and Mueller, Frank},
-title={Transversal fault tolerant distributed quantum computing operations},
-journal={Nature Communications},
-year={2026},
-month={Jul},
-day={20},
-issn={2041-1723},
-doi={10.1038/s41467-026-75693-3},
-url={https://doi.org/10.1038/s41467-026-75693-3}
-}
+@article{Stack_2026,
+   title={Transversal fault tolerant distributed quantum computing operations},
+   volume={17},
+   ISSN={2041-1723},
+   url={http://dx.doi.org/10.1038/s41467-026-75693-3},
+   DOI={10.1038/s41467-026-75693-3},
+   number={1},
+   pages={8838},
+   journal={Nature Communications},
+   author={Stack, John and Wang, Ming and Mueller, Frank},
+   year={2026},
+   month=July }
 ```
 
 ## Software Archive
